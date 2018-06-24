@@ -1,0 +1,170 @@
+<html>
+<head><h1 style=font-family:"Times New Roman"><center>Payment</h1></center>
+<style>
+#aa {
+	font-family:Lucida Fax;
+}
+#id1{
+	font-size:25px;
+}
+#id2{
+	font-size:25px;
+}
+#id3{
+	font-size:25px;
+}
+#div1
+{
+	background-image:url('ssss.jpg');
+	margin-left:25px;
+	margin-right:25px;
+	margin-top:25px;
+	margin-bottom:25px;
+	padding:10px 10px 10px 10px;
+	border-color:blue;
+	font-size:25px;
+	border-radius:25px;
+}
+button
+{
+	background-color:lightblue;
+	border-radius:25px;
+	padding:10px 10px 10px 10px;
+	color:light blue;
+	font-size:15px;
+	font-color:white;
+}
+.body 
+{
+	width-size:2000px;
+	heigth-size:1000px;
+}
+input[type=text],input[type=password]
+{
+	border-radius:15px;
+	padding:10px 10px 10px 10px;
+}
+</style>
+<script>
+function deb()
+{
+	var a=document.getElementById('d').value;
+	if(a=="")
+	{
+	document.getElementById('id1').innerHTML="Enter Name";
+	}
+	else
+	{
+	document.getElementById('id1').innerHTML="";
+	flag1=1;
+	}
+}
+function debno()
+{
+	var a=document.getElementById('dno').value;
+	var b=/^([0-9]){16}$/;
+	if(a=="")
+	{
+	document.getElementById('id2').innerHTML="Enter Card Number";
+	}
+	else if(b.test(a))
+	{
+	document.getElementById('id2').innerHTML="";
+	flag2=1;
+	}
+	else
+	{
+	document.getElementById('id2').innerHTML="Enter proper Card number";
+	}
+}
+function cvvno()
+{
+	var a=document.getElementById('cno').value;
+	var b=/^([0-9]){3}$/;
+	if(a=="")
+	{
+	document.getElementById('id3').innerHTML="Enter proper cvv";
+	}
+	else if(b.test(a))
+	{
+	document.getElementById('id3').innerHTML="";
+	flag3=1;
+	}
+	else
+	{
+	document.getElementById('id3').innerHTML="Enter proper CVV";
+	}
+}
+function mysub()
+{
+	if(flag1==1&&flag2==1&&flag3==1)
+	{
+	alert("Payment Successfull");
+	window.open=('sam.html');
+	}
+	//else if(flag1!=1||flag2!=1||flag3!=1)
+	//{
+	//	alert("Enter all fields");
+	//}
+	else
+	{
+	alert("Enter all Fields");
+	}
+}
+</script>
+</head>
+<body bgcolor="#ffcccc">
+<div id="div1" align="left">
+<form name="debit" id="form1">
+	<span id="id1" style="color:green;"></span><br>
+	<label align="left-side">NAME&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>	
+	<input type="text" id="d" onblur="deb()" required><br>
+	<span id="id2" style="color:green;"></span><br>
+	<label align="left-side">CARD NO&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+	<input type="text" id="dno" onblur="debno()" maxlength="16" required><br>
+	<span id="id3" style="colour:green;"></span><br>
+	<label align="left-side">CVV&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+	<input type="password" id="cno" onblur="cvvno()" maxlength="3" required><br><br>
+	<label>VALID TO/EXPIRY DATE&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+	<select id="m" name="month">
+	<option value="">MM</option>			
+  	<option value="1">01</option>
+	<option value="2">02</option>
+	<option value="3">03</option>
+  	<option value="4">04</option>
+  	<option value="5">05</option>
+  	<option value="6">06</option>			
+  	<option value="7">07</option>
+	<option value="8">08</option>
+	<option value="9">09</option>
+  	<option value="10">10</option>
+  	<option value="11">11</option>
+	<option value="12">12</option>
+</select>
+/<select id="m1" name="year">
+	<option value="">YYYY</option>			
+  	<option value="1">2019</option>
+	<option value="2">2020</option>
+	<option value="3">2021</option>
+  	<option value="4">2022</option>
+  	<option value="5">2023</option>
+  	<option value="6">2024</option>			
+  	<option value="7">2025</option>
+	<option value="8">2026</option>
+	<option value="9">2027</option>
+  	<option value="10">2028</option>
+  	<option value="11">2029</option>
+	<option value="12">2030</option>
+</select><br><br>
+<label align="left-side">DEBIT CARD TYPE&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+<select id="m2" name="debit1">
+	<option value="">Select debit card type</option>
+	<option value="visa">VISA debit card</option>
+	<option value="rupay">Rupay debit card</option>
+	<option value="visa">MasterCard debit card</option>
+</select><br><br>
+<button id="aa" align="center" type="submit" onclick="mysub()" value="submit"><center>Make Payment</button></center>
+</form>
+</div>
+</body>
+</html>

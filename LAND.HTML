@@ -1,0 +1,146 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#txtPhone').blur(function(e) {
+        if (validatePhone('txtPhone')) {
+            $('#spnPhoneStatus').html('Valid');
+            $('#spnPhoneStatus').css('color', 'green');
+        }
+        else {
+            $('#spnPhoneStatus').html('Invalid');
+            $('#spnPhoneStatus').css('color', 'red');
+        }
+    });
+});
+
+function validatePhone(txtPhone) {
+    var a = document.getElementById(txtPhone).value;
+    var filter = /^[0-9-+]{10}$/;
+    if (filter.test(a)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+</script>
+<script>
+$(document).ready(function() {
+    $('#email').blur(function(e) {
+        if (validateEmail('email')) {
+            $('#spnemailStatus').html('Valid');
+            $('#spnPhoneStatus').css('color', 'green');
+        }
+        else {
+            $('#spnemailStatus').html('Invalid');
+            $('#spnemailStatus').css('color', 'red');
+        }
+    });
+});
+
+function validateEmail(email) {
+    var a = document.getElementById(email).value;
+    var filter =  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (filter.test(a)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+</script>
+
+</head>
+<body oncontextmenu="return false">
+  <div>
+    <h1>BSNL LANDLINE CONNECTION FORM</h1><hr>
+  </div><br>
+<form id="phoneForm">
+
+  Circle *: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <select id="mydata" onchange="gamma()">
+          <option  value="">Select Your Circle</option>
+          <option id="S22" value="Tamilnadu">Tamilnadu</option>
+          <option id="S11" value="Kerala">Kerala</option>
+          <option id="S10" value="Karnataka">Karnataka</option>
+          <option id="S01" value="AndhraPradesh">Andhra Pradesh</option>
+          <option id="U05" value="delhi">Delhi</option>
+        </select><br><br><br>
+  SSA: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <select id="myneed" value="SELECT SSA"></select>
+  <script type="text/javascript">
+  var u={};
+  u["Tamilnadu"]=["Chennai","Erode","Salem","Madurai","Theni","Krishnagiri","Madurai","Thirunelveli"];
+  u["delhi"]=["New Delhi","North Delhi","North West Delhi","West Delhi","South West Delhi","South Delhi","Central Delhi"];
+  u["Karnataka"]=["Bengaluru","Bagalkot","Belagavi","Bellary","Vijayapur","Gadwag"];
+  u["Kerala"]=["Allapey","Ernakulam","Kannur","Kollam","Kottayam"];
+  u["AndhraPradesh"]=["Nellore","Kadapa","Guntur","Kurnool","Krishna"];
+
+  function gamma(){
+  var g=document.getElementById("mydata");
+  var f=document.getElementById("myneed");
+  var o=g.options[g.selectedIndex].value;
+  while(f.options.length){
+    f.remove(0);
+  }
+  var t=u[o];
+  if(t){
+    var p;
+    for(p=0; p < t.length; p++){
+      var v=document.createElement("OPTION");
+      v.text=t[p];
+      f.options.add(v,p);
+    }
+  }
+  }
+  </script>
+  <br><br>
+  Customer Name *:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <input type="text" id="item2" onblur="fun()" title="Please enter! Mandatory." name="CustomerName"/><br><br>
+    Phone Number *:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type='text' id='txtPhone'/>
+    <span id="spnPhoneStatus"></span></form>
+
+<pre>			   STD        NUMBER</pre>
+    Land Line Contact No:&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input type="text" id="item4" style="width:70px" name="Std"/>&nbsp&nbsp <input type="text" id="item5" name="Number"/><br><br><br>
+		Email-ID *: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <input type='text' id='email'/><span id="spnemailStatus"></span><br><br>
+      Service Type: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  			<select id="item7" name="ServiceType">
+  								<option value="selectoption1">Select Service Type</option>
+  								<option value="Broadband">Broadband</option>
+  								<option value="Landline">Landline</option>
+  								<option value="Landline&Broadband">Landline&Broadband</option>
+  								<option value="ISDN">ISDN</option>
+  							</select><br><br><br>
+  		Channel Of Approach: &nbsp&nbsp&nbsp&nbsp&nbsp
+  			<select id="item8" name="Channel Of Approach">
+  									<option value="selectoption2">Select Channel Of Approach</option>
+  									<option value="Individual"> Indivudual Subscriber</option>
+  									<option value="Franchise">Franchisee/DSA</option>
+  								</select><br><br><br>
+  		Address: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  			<textarea id="item9" placeholder="Enter Text Here" onblur="fun3()" title="Please enter! Mandatory." rows="4" cols="50">  </textarea>
+  			<pre>			Enter Address continuously without any special characters</pre>
+			<footer style="float:right;">* indicates mandatory fields</footer>
+			<button type="submit" onclick="mysub()" value="submit">SUBMIT FORM</button>
+			<button type="reset" onclick="myreload()" value="reset">RESET</button>
+
+<script>
+function mysub()
+{
+	alert("FORM IS SUBMITTED");
+  location.href="framed.html";
+	}
+</script>	
+<script>
+function myreload(){
+	location.reload();
+	}
+</script>	
+
+</form>
+
+</body>
+</html>
